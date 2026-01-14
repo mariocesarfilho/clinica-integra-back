@@ -1,12 +1,12 @@
 require "jwt"
 
 class AuthService
-  private
-
   def self.register(username:, email:, cpf:, periodo:, password:, password_confirmation:)
-  raise ArgumentError, "Senhas incopatíveis", password != password_confirmation
+    if password != password_confirmation
+        raise ArgumentError, "Senhas incompatíveis"
+    end
 
-    user = User.create!({
+    user = User.create({
       username: username,
       email: email,
       cpf: cpf,
@@ -15,7 +15,10 @@ class AuthService
       password_confirmation: password_confirmation
     })
 
-    token = Rails.application.credentials.secret_key_base
+    payload = { user_id: user.id }
+    secret_key = Rails.application.credentials.secret_key_base
+
+    token = JWT.encode(payload, secret_key, "HS256")
 
     {
       user_id: user.id,
