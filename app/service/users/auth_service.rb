@@ -2,13 +2,22 @@ require "jwt"
 
 module Users
   class AuthService
-    def initialize(username:, email:, cpf:, periodo:, password:, password_confirmation:)
-      @username = username
-      @email = email
-      @cpf = cpf
-      @periodo = periodo
-      @password = password
-      @password_confirmation = password_confirmation
+    # def initialize(username:, email:, cpf:, periodo:, password:, password_confirmation:)
+    #   @username = username
+    #   @email = email
+    #   @cpf = cpf
+    #   @periodo = periodo
+    #   @password = password
+    #   @password_confirmation = password_confirmation
+    # end
+    #
+    def initialize(params)
+      @username = params[:username]
+      @email = params[:email]
+      @cpf = params[:cpf]
+      @periodo = params[:periodo]
+      @password = params[:password]
+      @password_confirmation = params[:password_confirmation]
     end
 
     def call

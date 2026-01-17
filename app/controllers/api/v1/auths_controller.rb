@@ -2,7 +2,8 @@ module Api
   module V1
     class AuthsController < ApplicationController
       def create
-        auth_data = Users::AuthService.new(**auths_params.to_h).call
+        # auth_data = Users::AuthService.new(**auths_params.to_h.symbolize_keys).call
+        auth_data = Users::AuthService.new(auths_params).call
 
         render json: { user: auth_data, message: "Usuário criado com sucesso!" }, status: :created
       rescue ArgumentError => e
@@ -14,7 +15,8 @@ module Api
       private
 
       def auths_params
-        params.expect(user: [ :username, :email, :cpf, :periodo, :password, :password_confirmation ])
+        # params.expect(user: [ :username, :email, :cpf, :periodo, :password, :password_confirmation ])
+        params.require(:user).permit(:username, :email, :cpf, :periodo, :password, :password_confirmation)
       end
     end
   end
