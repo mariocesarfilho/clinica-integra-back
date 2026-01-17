@@ -9,12 +9,13 @@ gem "puma", ">= 5.0"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
 #
-
-gem "devise-jwt"
+gem 'devise-jwt', '~> 0.12.1'
 
 gem "bcrypt", "~> 3.1", ">= 3.1.12"
 
-gem "jwt", "~> 1.5", ">= 1.5.4"
+gem 'jwt-auth', '~> 5.0', '>= 5.0.1'
+
+gem 'jwt', '~> 3.1', '>= 3.1.2'
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
 
