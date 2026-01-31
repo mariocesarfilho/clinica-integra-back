@@ -13,12 +13,12 @@ module Api
       end
 
       def create
-        patient.create(patient_params)
+        patient = Patients::PatientService.register(patient_params)
 
-        if patient.save
-          render json: patient, status: :created
+        if patient.success?
+          render json: { token: token, patient: patient }, status: :created
         else
-          render json: patient.error, status: :unprocessable_entity
+          render json: { errors: patient.errors.full_messages }, status: :unprocessable_entity
         end
       end
 
