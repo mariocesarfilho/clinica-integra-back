@@ -9,7 +9,7 @@ gem "puma", ">= 5.0"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
 
-gem "bcrypt", "~> 3.1", ">= 3.1.12"
+gem "bcrypt", "~> 3.1"
 
 gem 'jwt-auth', '~> 5.0', '>= 5.0.1'
 
